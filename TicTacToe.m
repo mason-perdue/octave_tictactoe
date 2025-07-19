@@ -7,14 +7,7 @@ disp("1 = Player Move");
 disp("2 = Computer Move");
 Pmove = 0;  # Player Move
 Cmove = 0;  # Computer Move
-Pboard(numboard);
-Pboard(board);
-while(1 == 1)
-  function replay
-  disp("Play Again?");
-  break;
-endfunction
-  function Pboard(board)
+function Pboard(board)
   disp(" ");
   printf("%d | %d | %d\n", board{1}, board{2}, board{3});
   printf("---------\n");
@@ -22,7 +15,25 @@ endfunction
   printf("---------\n");
   printf("%d | %d | %d\n", board{7}, board{8}, board{9});
 endfunction
-  function main(board)  
+Pboard(numboard);
+Pboard(board);
+function replay
+  disp("Play Again?");
+  while(1 == 1)
+    x = 1;
+  endwhile
+endfunction
+while(1 == 1)
+main(board)
+function Pboard(board)
+  disp(" ");
+  printf("%d | %d | %d\n", board{1}, board{2}, board{3});
+  printf("---------\n");
+  printf("%d | %d | %d\n", board{4}, board{5}, board{6});
+  printf("---------\n");
+  printf("%d | %d | %d\n", board{7}, board{8}, board{9});
+endfunction
+function main(board)  
   # Board Full
   if(board{1} != 0) && (board{2} != 0) && (board{3} != 0) && (board{4} != 0) && (board{5} != 0) && (board{6} != 0) && (board{7} != 0) && (board{8} != 0) && (board{9} != 0)
     disp("No Winner.");
@@ -40,6 +51,7 @@ endfunction
     Pboard(board);
     disp("You Win!");
     replay
+    break;
   endif
   if(board{2} == 1) && (board{5} == 1) && (board{8} == 1)
     Pboard(board);
@@ -744,4 +756,3 @@ endfunction
   endif
 endfunction
 endwhile
-main(board)
