@@ -9,15 +9,15 @@ Pmove = 0;  # Player Move
 Cmove = 0;  # Computer Move
 function Pboard(board)
   disp(" ");
-  printf("%d | %d | %d\n", board{1}, board{2}, board{3});
+  printf("%d | %d | %d\n", board{7}, board{8}, board{9});
   printf("---------\n");
   printf("%d | %d | %d\n", board{4}, board{5}, board{6});
   printf("---------\n");
-  printf("%d | %d | %d\n", board{7}, board{8}, board{9});
+  printf("%d | %d | %d\n", board{1}, board{2}, board{3});
 endfunction
 Pboard(numboard);
 Pboard(board);
-function main(board)  
+function main(board)
   # Board Full
   if(board{1} != 0) && (board{2} != 0) && (board{3} != 0) && (board{4} != 0) && (board{5} != 0) && (board{6} != 0) && (board{7} != 0) && (board{8} != 0) && (board{9} != 0)
     disp("No Winner.");
@@ -130,7 +130,7 @@ function main(board)
       endif
     endif
   endif
-  
+
   # Top Right Corner
   if(board{1,3} == 2)
     if(board{1,2} == 2)
@@ -188,7 +188,7 @@ function main(board)
       endif
     endif
   endif
-  
+
   # Bottom Left Corner
   if(board{1,7} == 2)
     if(board{1,1} == 2)
@@ -246,7 +246,7 @@ function main(board)
       endif
     endif
   endif
-  
+
   # Bottom Right Corner
   if(board{1,9} == 2)
     if(board{1,7} == 2)
@@ -389,9 +389,9 @@ function main(board)
       endif
     endif
   endif
- 
-  
-  
+
+
+
   # Block Player from Winning?
   # Corners
   # Top Left Corner
@@ -445,7 +445,7 @@ function main(board)
       endif
     endif
   endif
-  
+
   # Top Right Corner
   if(board{1,3} == 1)
     if(board{1,2} == 1)
@@ -497,7 +497,7 @@ function main(board)
       endif
     endif
   endif
-  
+
   # Bottom Left Corner
   if(board{1,7} == 1)
     if(board{1,1} == 2)
@@ -549,7 +549,7 @@ function main(board)
       endif
     endif
   endif
-  
+
   # Bottom Right Corner
   if(board{1,9} == 1)
     if(board{1,7} == 1)
@@ -678,7 +678,7 @@ function main(board)
       endif
     endif
   endif
-  
+
   # Make Move
   # Corners
   if(board{1} == 0)
@@ -739,11 +739,12 @@ function main(board)
   endif
 endfunction
 function replay
-  disp("Play Again?");
-  while(1 == 1)
-    x = 1;
-  endwhile
+  disp("Play Again? (y/n)");
+  Rmove = input("")
+  if(Pmove == "y")
+    main(board);
+  endif
 endfunction
 while(1 == 1)
-main(board)
+  main(board)
 endwhile
